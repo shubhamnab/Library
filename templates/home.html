@@ -1,0 +1,39 @@
+<ion-view view-title="SearchAround">
+  <ion-content>
+      <div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+        Select Area
+    </div>
+    <select id="sel" class="input-block-level" ng-model="list_category" ng-options="obj.id as obj.name for obj in list_areas.data">
+        <option>Other</option>
+    </select>
+  </label>
+</div>
+       <div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+        Select Service
+    </div>
+    <select id="sel" class="input-block-level" ng-model="list_category" ng-options="obj.id as obj.name for obj in list_services.data">
+      <option>Other</option>
+    </select>
+  </label>
+</div>
+      
+<ul class="cate-lv1">
+    <h2>Services around You</h2>
+<li>
+<a class="item-background cate-lv1-item" ng-repeat="service in services" href="#/app/listing/{{service.id}}" style="background: url(img/category/{{service.img}}) no-repeat; background-size: cover;">
+                <div class="item-wrapper">
+                    <h2>{{service.title}}</h2>
+                   
+                </div>
+            </a>
+            </li>
+        </ul>
+    
+  </ion-content>
+</ion-view>
