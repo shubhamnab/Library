@@ -4,7 +4,7 @@
           
          
          <div class="list card" ng-repeat="list in lists | filter:search">
-
+<a href="#/app/detail/{{list.id}}">
   <div class="item item-avatar">
  <!--   <img src="img/{{list.head}}/{{list.image}}">-->
       <img src="img/category/1.jpg">
@@ -12,7 +12,7 @@
     <p>{{list.address}}</p>
     <p>{{list.email}}</p>
     <p>{{list.mobile}}</p>
-  </div>
+  </div></a>
 
   
 

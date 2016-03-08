@@ -1,6 +1,12 @@
-angular.module('starter.controllers', [])
+var myApp=angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+myApp.factory('Data',function(){
+    return{
+        id:''
+    };
+});
+
+myApp.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -41,7 +47,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('homeCtrl', function($scope,$stateParams) {
+myApp.controller('homeCtrl', function($scope,$stateParams) {
   $scope.list_areas = {
         data: [{name: 'Malviya Nagar'},
                {name: 'Sanganer'},
@@ -62,13 +68,42 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('ListingController', function($scope, $stateParams, $http,Data) {
+myApp.controller('ListingController', function($scope, $stateParams, $http,Data) {
     console.log($stateParams);
     Data.id=$stateParams.serviceId;
     console.log(Data.id);
     $http.get('json/services'+$stateParams.serviceId+'.json',{}).success(function(data){
 			$scope.lists = data;
 		});
+})
+
+myApp.controller('DetailController',function($scope, $stateParams, $http,Data){
+    var x = Data.id;
+    console.log(x);
+     $http.get('json/services'+Data.id+'.json',{}).success(function(data){
+         $scope.lists = data;
+         
+         for(i=0;i<data.length;i++){
+             if(data[i].id==$stateParams.listId){
+                 $scope.detail=data[i];
+                 //$scope.demo=data[i].id;
+                 break;
+             }
+         }
+		});
+    console.log("hello");
+    $http.get('json/'+Data.id+'_services.json',{}).success(function(data){
+        $scope.lists=data;
+        console.log($stateParams.listId);
+        console.log("hi");
+        for(i=0;i<data.length;i++){
+            if(data[i].id==$stateParams.listId){
+                $scope.services=data[i];
+                console.log($scope.services);
+            }
+        }
+    });
+         
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

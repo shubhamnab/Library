@@ -6244,7 +6244,7 @@ button.item.item-button-right {
 .item-avatar .item-content,
 .item-avatar-left,
 .item-avatar-left .item-content {
-  padding-left: 72px;
+  padding-left: 130px;
   min-height: 72px; }
   .item-avatar > img:first-child,
   .item-avatar .item-image,
@@ -6257,11 +6257,11 @@ button.item.item-button-right {
     position: absolute;
     top: 16px;
     left: 16px;
-    max-width: 40px;
-    max-height: 40px;
+    max-width: 80px;
+    max-height: 80px;
     width: 100%;
     height: 100%;
-    border-radius: 50%; }
+    border-radius: 0%; }
 
 .item-avatar-right,
 .item-avatar-right .item-content {
