@@ -96,12 +96,14 @@ myApp.controller('DetailController',function($scope, $stateParams, $http,Data){
     $http.get('json/'+Data.id+'_services.json',{}).success(function(data){
         $scope.lists=data;
         $scope.tuples=[];
+        var k=0
         console.log($stateParams.listId);
         console.log("hi");
         for(i=0;i<data.length;i++){
             if(data[i].id==$stateParams.listId){
-                $scope.tuples[i]=data[i];
-                //console.log($scope.tuples);
+                $scope.tuples[k]=data[i];
+                k=k+1;
+                console.log($scope.tuples);
                 
             }
         }
@@ -121,11 +123,19 @@ myApp.controller('DetailController',function($scope, $stateParams, $http,Data){
                 
             }
         }
-    });
-    
-    
-         
+    });       
 })
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+myApp.controller('OrderController',function($scope,$stateParams,Data,$http){
+    $scope.message=$stateParams.serviceId;
+    $http.get('json/'+Data.id+'_services.json',{}).success(function(data){
+        $scope.lists=data;
+        for(i=0;i<data.length;i++){
+            if(data[i].service_id==$stateParams.serviceId){
+                $scope.order=data[i];
+                break;
+            }
+        }
+    });
+})
+myApp.controller('PlaylistCtrl', function($scope, $stateParams) {
 });

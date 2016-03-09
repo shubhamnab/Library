@@ -1,4 +1,4 @@
-<ion-view view-title="Kids Tutor" style="background-color:">
+<ion-view view-title="SearchAround" style="background-color:">
 <ion-content class='header-background has-header padding scrolling' scroll='true'>
    
     
@@ -32,11 +32,19 @@
 
   <div class="item item-body">
       <h2>Services</h2>
+      <div class="row">
+    <div class="col-40">Service </div>
+    <div class="col-20">Price </div>
+    <div class="col-25">Discount</div>
+    <div class="col-15">Buy</div>
+      </div>
+
     <div class="row" ng-repeat="service in tuples track by $index">
-    <div class="col-33">{{service.service_name}} </div>
-    <div class="col-33">{{service.price}} </div>
-    <div class="col-33">{{service.discount}} </div>
-  
+    <div class="col-40">{{service.service_name}} </div>
+    <div class="col-20">{{service.price}} </div>
+    <div class="col-25">{{service.discount}} </div>
+    <div class="col-15"><a href="#/app/order/{{service.service_id}}"><button class="button button-small button-assertive">Grab</button></a> </div>
+                        
 
         
     </div>
