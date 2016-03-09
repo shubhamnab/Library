@@ -74,6 +74,7 @@ myApp.controller('ListingController', function($scope, $stateParams, $http,Data)
     console.log(Data.id);
     $http.get('json/services'+$stateParams.serviceId+'.json',{}).success(function(data){
 			$scope.lists = data;
+        console.log($scope.lists);
 		});
 })
 
@@ -94,15 +95,35 @@ myApp.controller('DetailController',function($scope, $stateParams, $http,Data){
     console.log("hello");
     $http.get('json/'+Data.id+'_services.json',{}).success(function(data){
         $scope.lists=data;
+        $scope.tuples=[];
         console.log($stateParams.listId);
         console.log("hi");
         for(i=0;i<data.length;i++){
             if(data[i].id==$stateParams.listId){
-                $scope.services=data[i];
-                console.log($scope.services);
+                $scope.tuples[i]=data[i];
+                //console.log($scope.tuples);
+                
             }
         }
     });
+    
+    $http.get('json/'+Data.id+'_gallery.json',{}).success(function(data){
+        $scope.lists=data;
+        var j=0;
+        $scope.images=[];
+        console.log($stateParams.listId);
+        console.log("hi");
+        for(i=0;i<data.length;i++){
+            if(data[i].id==$stateParams.listId){
+                $scope.images[j]=data[i];
+                j=j+1;
+                console.log($scope.images);
+                
+            }
+        }
+    });
+    
+    
          
 })
 
