@@ -55,7 +55,12 @@ myApp.controller('homeCtrl', function($scope,$stateParams) {
     };
     $scope.list_services = {
         data: [{name: 'Dancing'},
-               {name: 'Singing'}]
+               {name: 'Singing'},
+              {name:'Yoga'},
+              {name:'Gym'},
+              {name:'Music'},
+              {name:'Salon'},
+              {name:'Club'}]
     };
     $scope.services = [
     { title: 'Singing', id: "Singing",img:'1.jpg' },

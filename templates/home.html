@@ -1,6 +1,7 @@
 <ion-view view-title="SearchAround">
   <ion-content>
-      <div class="list">
+      <form action="search.php" method="post">
+   <!--   <div class="list">
 
   <label class="item item-input item-select">
     <div class="input-label">
@@ -21,7 +22,36 @@
       <option>Other</option>
     </select>
   </label>
-</div>
+</div>-->
+          <ion-item>
+  <ion-label>Select Area</ion-label>
+  <ion-select [(ngModel)]="area">
+    <ion-option >Malviya Nagar</ion-option>
+    <ion-option>Tonk Fatak</ion-option>
+      <ion-option >Mansarovar</ion-option>
+      <ion-option >Vaishali Nagar</ion-option>
+      <ion-option >Vidyadhar Nagar</ion-option>
+      <ion-option >Bani Park</ion-option>
+  </ion-select>
+</ion-item>
+          <ion-item>
+  <ion-label>Select Service</ion-label>
+  <ion-select [(ngModel)]="gender">
+    <ion-option >Dancing</ion-option>
+    <ion-option >Singing</ion-option>
+      <ion-option >Gym</ion-option>
+      <ion-option >Yoga</ion-option>
+      <ion-option >Salon</ion-option>
+      <ion-option >Guitar</ion-option>
+      <ion-option >Club</ion-option>
+  </ion-select>
+</ion-item>
+          <button class="button button-full button-positive" type="submit" name="submit" value="search">
+  Submit
+  </button>
+
+</form>
+      
       
 <ul class="cate-lv1">
     <h2>Services around You</h2>
