@@ -6,6 +6,13 @@ myApp.factory('Data',function(){
     };
 });
 
+myApp.factory('Search',function(){
+    return{
+        area:'',
+        service:''
+    };
+});
+
 myApp.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
@@ -47,7 +54,7 @@ myApp.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   };
 })
 
-myApp.controller('homeCtrl', function($scope,$stateParams) {
+myApp.controller('homeCtrl', function($scope,$stateParams,$http,$location,Search) {
   $scope.list_areas = {
         data: [{name: 'Malviya Nagar'},
                {name: 'Sanganer'},
@@ -56,11 +63,11 @@ myApp.controller('homeCtrl', function($scope,$stateParams) {
     $scope.list_services = {
         data: [{name: 'Dancing'},
                {name: 'Singing'},
-              {name:'Yoga'},
-              {name:'Gym'},
-              {name:'Music'},
-              {name:'Salon'},
-              {name:'Club'}]
+               {name:'Yoga'},
+               {name:'Gym'},
+               {name:'Music'},
+               {name:'Salon'},
+               {name:'Club'}]
     };
     $scope.services = [
     { title: 'Singing', id: "Singing",img:'1.jpg' },
@@ -71,6 +78,44 @@ myApp.controller('homeCtrl', function($scope,$stateParams) {
     { title: 'Club', id: "Swimming",img:'6.jpg' },
     { title: 'Salon', id: "Salon",img:'7.jpg' }
   ];
+    $scope.selectedChoice = function(){
+        // 
+        var selectedArea = 'Malviya Nagar';
+        var selectedService = 'Dancing';
+        Search.area=selectedArea;
+        Search.service=selectedService
+        
+        
+        
+        $http.post('php/search.php', {
+        'area' : selectedArea,
+        'service' : selectedService
+        
+    }).success(function(response){
+          console.log(response);
+         // $location.path('/app/thankyou')
+      });
+        $location.path('/app/aftersearch') 
+    }
+})
+
+myApp.controller('aftersearchController', function($scope, $stateParams, $http,Search,Data) {
+     $http.get('json/services'+Search.service+'.json',{}).success(function(data){
+        Data.id=Search.service;
+        $scope.lists=[];
+        var k=0
+        //console.log($stateParams.listId);
+        console.log("hi");
+        for(i=0;i<data.length;i++){
+            if(data[i].area==Search.area){
+                $scope.lists[k]=data[i];
+                k=k+1;
+                console.log($scope.lists);
+                
+            }
+        }
+            
+    });
 })
 
 myApp.controller('ListingController', function($scope, $stateParams, $http,Data) {

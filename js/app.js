@@ -40,6 +40,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
+  
+  .state('app.aftersearch', {
+    url: '/aftersearch',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/aftersearch.html',
+        controller: 'aftersearchController'
+      }
+    }
+  })
 
   .state('app.browse', {
       url: '/browse',

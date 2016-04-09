@@ -1,52 +1,46 @@
 <ion-view view-title="SearchAround">
   <ion-content>
-      <form action="search.php" method="post">
-   <!--   <div class="list">
+      <form >
+
+          
+<div class="list">
 
   <label class="item item-input item-select">
     <div class="input-label">
-        Select Area
+      Select Area
     </div>
-    <select id="sel" class="input-block-level" ng-model="list_category" ng-options="obj.id as obj.name for obj in list_areas.data">
-        <option>Other</option>
+    <select ngModel="area">
+      <option >Malviya Nagar</option>
+      <option>Tonk Fatak</option>
+      <option >Mansarovar</option>
+      <option >Vaishali Nagar</option>
+      <option >Vidyadhar Nagar</option>
+      <option >Bani Park</option>
     </select>
   </label>
+
 </div>
-       <div class="list">
+
+          <div class="list">
 
   <label class="item item-input item-select">
     <div class="input-label">
-        Select Service
+      Select Service
     </div>
-    <select id="sel" class="input-block-level" ng-model="list_category" ng-options="obj.id as obj.name for obj in list_services.data">
-      <option>Other</option>
+    <select ngModel="service">
+      <option >Dancing</option>
+      <option >Singing</option>
+      <option >Gym</option>
+      <option >Yoga</option>
+      <option >Salon</option>
+      <option >Guitar</option>
+      <option >Club</option>
     </select>
   </label>
-</div>-->
-          <ion-item>
-  <ion-label>Select Area</ion-label>
-  <ion-select [(ngModel)]="area">
-    <ion-option >Malviya Nagar</ion-option>
-    <ion-option>Tonk Fatak</ion-option>
-      <ion-option >Mansarovar</ion-option>
-      <ion-option >Vaishali Nagar</ion-option>
-      <ion-option >Vidyadhar Nagar</ion-option>
-      <ion-option >Bani Park</ion-option>
-  </ion-select>
-</ion-item>
-          <ion-item>
-  <ion-label>Select Service</ion-label>
-  <ion-select [(ngModel)]="gender">
-    <ion-option >Dancing</ion-option>
-    <ion-option >Singing</ion-option>
-      <ion-option >Gym</ion-option>
-      <ion-option >Yoga</ion-option>
-      <ion-option >Salon</ion-option>
-      <ion-option >Guitar</ion-option>
-      <ion-option >Club</ion-option>
-  </ion-select>
-</ion-item>
-          <button class="button button-full button-positive" type="submit" name="submit" value="search">
+
+</div>
+          
+          <button class="button button-full button-positive" ng-click="selectedChoice()" type="submit" name="submit" value="search">
   Submit
   </button>
 
